@@ -1,0 +1,72 @@
+GET http://localhost:9200/beer/post/_search
+Content-Type: application/json
+
+{
+  "size": 5,
+  "query": {
+    "multi_match": {
+      "query": "I have issue with xmonad",
+      "fields": [
+        "Body.ngram^2",
+        "Body^8",
+        "Title.ngram^4",
+        "Title^16",
+        "Answer.Body^4",
+        "Answer.Body.ngram^1"
+      ]
+    }
+  }
+}
+
+# "highlight" : {
+#   "fields" : {
+#     "Body" : {},
+#     "Answer.Body" : {},
+#     "Title" : {},
+#     "Body.ngram" : {},
+#     "Answer.Body.ngram" : {},
+#     "Title.ngram" : {}
+#   }
+# }
+
+# Guiness
+GET http://localhost:9200/beer/post/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "multi_match": {
+      "query": "1664",
+      "fields": [
+        "Body.ngram",
+        "Title.ngram",
+        "Answer.Body.ngram"
+      ]
+    }
+  }
+}
+
+## lk
+GET http://localhost:9200/beer/post/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "match": {
+      "Title.ngram": "guinnes"
+    }
+  }
+}
+
+## lk
+GET http://localhost:9200/beer/post/_search
+Content-Type: application/json
+
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+## lk
+GET http://localhost:9200/_cluster/health

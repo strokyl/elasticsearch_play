@@ -1,0 +1,67 @@
+{
+  "filter": {
+    "english_stop": {
+      "type":       "stop",
+      "stopwords":  "_english_" 
+    },
+    "english_stemmer": {
+      "type":       "stemmer",
+      "language":   "english"
+    },
+    "english_possessive_stemmer": {
+      "type":       "stemmer",
+      "language":   "possessive_english"
+    }
+  },
+  "tokenizer": {
+    "trigram": {
+      "type": "ngram",
+      "min_gram": 2,
+      "max_gram": 4,
+      "token_chars": [
+        "letter",
+        "digit"
+      ]
+    }
+  },
+  "analyzer": {
+    "custom_english": {
+      "tokenizer":  "standard",
+      "filter": [
+        "english_possessive_stemmer",
+        "lowercase",
+        "english_stop",
+        "english_stemmer"
+      ]
+    },
+    "custom_english_trigram": {
+      "tokenizer":  "trigram",
+      "filter": [
+        "english_possessive_stemmer",
+        "lowercase",
+        "english_stop",
+        "english_stemmer"
+      ]
+    },
+    "custom_html_english": {
+      "char_filter":  [ "html_strip" ],
+      "tokenizer":  "standard",
+      "filter": [
+        "english_possessive_stemmer",
+        "lowercase",
+        "english_stop",
+        "english_stemmer"
+      ]
+    },
+    "custom_html_english_trigram": {
+      "char_filter":  [ "html_strip" ],
+      "tokenizer":  "trigram",
+      "filter": [
+        "english_possessive_stemmer",
+        "lowercase",
+        "english_stop",
+        "english_stemmer"
+      ]
+    }
+  }
+}

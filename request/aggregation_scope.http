@@ -1,0 +1,38 @@
+GET http://localhost:9200/beer/post/_search
+Content-Type: application/json
+
+{
+  "size": 1,
+  "aggregations": {
+    "avg_answer_score": {
+      "avg": {
+        "field": "Answer.Score"
+      }
+    },
+    "avg_score": {
+      "avg": {
+        "field": "Score"
+      }
+    },
+    "percentage_of_accepted_answer": {
+      "avg": {
+        "field": "AcceptedAnswerId",
+        "missing": 0,
+        "script": {
+          "lang": "painless",
+          "inline": "1"
+        }
+      }
+    },
+    "avg_answern_number": {
+      "avg": {
+        "field": "Answer",
+        "missing": 0,
+        "script": {
+          "lang": "painless",
+          "inline": "_source.length"
+        }
+      }
+    }
+  }
+}

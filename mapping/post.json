@@ -1,0 +1,81 @@
+{
+  "properties": {
+    "AcceptedAnswerId": {
+      "type": "integer"
+    },
+    "CreationDate": {
+      "type": "date"
+    },
+    "Score": {
+      "type": "integer"
+    },
+    "ViewCount": {
+      "type": "integer"
+    },
+    "Body": {
+      "type": "text",
+      "analyzer": "custom_html_english",
+      "fields": {
+        "ngram": {
+          "type": "text",
+          "analyzer": "custom_html_english_trigram"
+        }
+      }
+    },
+    "Title": {
+      "type": "text",
+      "analyzer": "custom_english",
+      "fields": {
+        "ngram": {
+          "type": "text",
+          "analyzer": "custom_english_trigram"
+        }
+      }
+    },
+    "OwnerUserId": {
+      "type": "integer"
+    },
+    "Tags": {
+      "type": "keyword"
+    },
+    "AnswerCount": {
+      "type": "integer"
+    },
+    "CommentCount": {
+      "type": "integer"
+    },
+    "Answer": {
+      "properties": {
+        "Id": {
+          "type": "integer",
+          "index": "no"
+        },
+        "ParentId": {
+          "type": "integer"
+        },
+        "CreationDate": {
+          "type": "date"
+        },
+        "Score": {
+          "type": "integer"
+        },
+        "Body": {
+          "type": "text",
+          "analyzer": "custom_html_english",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "custom_html_english_trigram"
+            }
+          }
+        },
+        "OwnerUserId": {
+          "type": "integer"
+        },
+        "CommentCount": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}
